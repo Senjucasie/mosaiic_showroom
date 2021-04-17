@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class AwakerProducts : MonoBehaviour
 {
-    public GameObject products;
+   // public GameObject products;
 
     void Awake()
     {
-        products.SetActive(false);
+        gameObject.SetActive(false);
     }
 }

@@ -5,19 +5,23 @@ using UnityEngine;
 public class AwakerModels : MonoBehaviour
 {
     public GameObject models;
-    public GameObject chair;
-    public GameObject stool;
-    public GameObject jigsaw;
-    public GameObject etron;
-
+    /* public GameObject chair;
+     public GameObject stool;
+     public GameObject jigsaw;
+     public GameObject etron;*/
+    public List<GameObject> products;
 
     void Awake()
     {
         models.SetActive(false);
-        chair.SetActive(false);
+       /* chair.SetActive(false);
         stool.SetActive(false);
         jigsaw.SetActive(false);
-        etron.SetActive(false);
+        etron.SetActive(false);*/
+        foreach(GameObject x in products )
+        {
+            x.SetActive(false);
+        }
 
     }
 }
