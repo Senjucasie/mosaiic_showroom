@@ -13,7 +13,7 @@ public class AwakerModels : MonoBehaviour
 
     void Awake()
     {
-        models.SetActive(false);
+        gameObject.SetActive(false);
        /* chair.SetActive(false);
         stool.SetActive(false);
         jigsaw.SetActive(false);
