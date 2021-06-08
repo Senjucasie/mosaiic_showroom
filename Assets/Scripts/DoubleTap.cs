@@ -9,7 +9,7 @@ public class DoubleTap : MonoBehaviour, IMixedRealityPointerHandler
     [SerializeField]
     private bool _Timer = false;
     public GameObject Tools;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +40,7 @@ public class DoubleTap : MonoBehaviour, IMixedRealityPointerHandler
         Debug.Log("Doubletap");
         if (!Tools.activeInHierarchy)
             Tools.SetActive(true);
+        else Tools.SetActive(false);
     }
     private void resettimer()
     {
