@@ -11,17 +11,21 @@ public class AwakerModels : MonoBehaviour
      public GameObject etron;*/
     public List<GameObject> products;
 
-    void Awake()
+    void Start()
+    {
+     
+
+    }
+    private void check()
     {
         gameObject.SetActive(false);
-       /* chair.SetActive(false);
-        stool.SetActive(false);
-        jigsaw.SetActive(false);
-        etron.SetActive(false);*/
-        foreach(GameObject x in products )
+        /* chair.SetActive(false);
+         stool.SetActive(false);
+         jigsaw.SetActive(false);
+         etron.SetActive(false);*/
+        foreach (GameObject x in products)
         {
             x.SetActive(false);
         }
-
     }
 }

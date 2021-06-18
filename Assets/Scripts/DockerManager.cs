@@ -1,4 +1,5 @@
 ﻿using Microsoft.MixedReality.Toolkit.Utilities.Solvers;
+
 using UnityEngine;
 
 public class DockerManager : MonoBehaviour
@@ -15,4 +16,5 @@ public class DockerManager : MonoBehaviour
     {
         _radialView.enabled = false;
     }
+    
 }
