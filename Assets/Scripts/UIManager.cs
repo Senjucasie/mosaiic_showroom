@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using TMPro;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
@@ -11,10 +10,12 @@ public class UIManager : MonoBehaviour
     public GameObject ShadeComment,ShadeColor,ShadeAddComment;
     //UI Gameobjects
     public GameObject ColorButn, CommentButn,AddCommentButn,CommentDisplay,CommentView,CommentAdd,ColorUI,Background,CommentBackground;
-    public List<GameObject> CommentList;
+    public CommentManager CommentControl;
+    public int CurrentIndex;
     [SerializeField]
     private Transform ChairUIPos;
     bool test=true;
+    public TextMeshPro CommentText;
     void Start()
     {
         
@@ -61,9 +62,17 @@ public class UIManager : MonoBehaviour
         ShadeComment.SetActive(false);
         CommentView.SetActive(true);
         AddCommentButn.SetActive(true);
+        CommentAdd.SetActive(false);
+        CommentBackground.SetActive(true);
+
     }
     public void Delete()
     {
+        DestroyImmediate(CommentControl.ChairCommentList[CurrentIndex].Comment);
+        CommentControl.ChairCommentList.RemoveAt(CurrentIndex);
+        CommentControl.ChairGrid.UpdateCollection();
+        CommentControl.Chairscroll.Reset();
+        back();
 
     }
     public void back()
@@ -75,13 +84,25 @@ public class UIManager : MonoBehaviour
     }
     public void AddNewComment()
     {
-       
+
+        ResetColor();
+        CommentBackground.SetActive(true);
+        CommentView.SetActive(false);
+        CommentDisplay.SetActive(false);
+        CommentAdd.SetActive(true);
+
     }
-    public void OnclickComment()
+    public void OnclickComment(int index)
     {
+        CurrentIndex = index;
+        Debug.Log(CurrentIndex);
+        CommentText.text = CommentControl.ChairCommentList[CurrentIndex].Content;
         ShadeAddComment.SetActive(true);
         CommentView.SetActive(false);
         CommentDisplay.SetActive(true);
+        CommentAdd.SetActive(false);
+        CommentBackground.SetActive(false);
+        
     }
     public void ResetColor()
     {
