@@ -5,17 +5,15 @@ using UnityEngine;
 public class ToggleClipping : MonoBehaviour
 {
     public GameObject clippingSphere;
-    public bool toggleBoolClipping;
-    [SerializeField]
+   [SerializeField]
     private Transform _clipPoint;
 
-    public void OnClipping()
+    public void OnClippingEnable()
     {
-        toggleBoolClipping = !toggleBoolClipping;
-        if(toggleBoolClipping)
-        {
-            clippingSphere.transform.position = _clipPoint.position;
-        }
-        clippingSphere.SetActive(toggleBoolClipping);
+        clippingSphere.SetActive(true);
+    }
+    public void OnClippingDisable()
+    {
+        clippingSphere.SetActive(false);
     }
 }

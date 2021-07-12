@@ -37,7 +37,7 @@ public class CommentManager : MonoBehaviour
                 int count = ChairCommentList.Count;
                 count++;
                 ChairCommentList.Add(new CommentDataHolder("Comment" + count.ToString(), Chairtext.text, commentbuttn));
-                commentbuttn.transform.GetChild(4).GetChild(0).GetComponent<TextMeshPro>().text = ChairCommentList[count - 1].Title;
+                commentbuttn.transform.GetChild(4).GetChild(0).GetComponent<TextMeshPro>().text = ChairCommentList[count - 1].Content;
                 commentbuttn.GetComponent<OnClickComment>().UIcontrol = UIControl;
                 commentbuttn.GetComponent<Interactable>().OnClick.AddListener(() => commentbuttn.GetComponent<OnClickComment>().OnClick());
                 ChairGrid.UpdateCollection();

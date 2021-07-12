@@ -28,14 +28,9 @@ public class UIManager : MonoBehaviour
     }
     public void SetUI()
     {
-        if(test)
-        {
-            ChairUI.transform.position = ChairUIPos.position;
-            ChairUI.SetActive(true);
-            test = false;
-        }
-       
 
+
+        Invoke("DelayUI", .5f);
         
     }
     public void SetParent()
@@ -119,5 +114,14 @@ public class UIManager : MonoBehaviour
         AddCommentButn.SetActive(false);
         
 
+    }
+    public void DelayUI()
+    {
+        if (test)
+        {
+            ChairUI.transform.position = ChairUIPos.position;
+            ChairUI.SetActive(true);
+            test = false;
+        }
     }
 }
