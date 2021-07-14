@@ -17,10 +17,12 @@ public class CommentManager : MonoBehaviour
     public ScrollingObjectCollection Chairscroll;
     public TextMeshPro Chairtext;
     public UIManager UIControl;
+    [SerializeField]
+    private string _timeDate;
 
     void Start()
     {
-        
+ 
     }
 
     // Update is called once per frame
@@ -36,8 +38,10 @@ public class CommentManager : MonoBehaviour
                 var commentbuttn = Instantiate(CommentbutnPrefab, ButnParent);
                 int count = ChairCommentList.Count;
                 count++;
-                ChairCommentList.Add(new CommentDataHolder("Comment" + count.ToString(), Chairtext.text, commentbuttn));
+                settime();
+                ChairCommentList.Add(new CommentDataHolder("Comment" + count.ToString(), Chairtext.text, _timeDate, commentbuttn));
                 commentbuttn.transform.GetChild(4).GetChild(0).GetComponent<TextMeshPro>().text = ChairCommentList[count - 1].Content;
+                commentbuttn.transform.GetChild(4).GetChild(1).GetComponent<TextMeshPro>().text = ChairCommentList[count - 1].DateTime;
                 commentbuttn.GetComponent<OnClickComment>().UIcontrol = UIControl;
                 commentbuttn.GetComponent<Interactable>().OnClick.AddListener(() => commentbuttn.GetComponent<OnClickComment>().OnClick());
                 ChairGrid.UpdateCollection();
@@ -84,5 +88,11 @@ public class CommentManager : MonoBehaviour
                 break;
 
         }
+    }
+    private void settime()
+    {
+        System.DateTime theTime = System.DateTime.Now;
+        string date = theTime.Day + "." + theTime.Month + "." + theTime.Year;
+        _timeDate = date + theTime.Hour + ":" + theTime.Minute + ":" + theTime.Second;
     }
 }
