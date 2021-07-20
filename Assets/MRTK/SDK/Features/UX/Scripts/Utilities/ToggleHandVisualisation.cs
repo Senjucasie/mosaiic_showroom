@@ -9,18 +9,17 @@ namespace Microsoft.MixedReality.Toolkit.UI
     [AddComponentMenu("Scripts/MRTK/SDK/ToggleHandVisualisation")]
     public class ToggleHandVisualisation : MonoBehaviour
     {
+        private void Start()
+        {
+            MixedRealityHandTrackingProfile handTrackingProfile =gethandreference();
+            handTrackingProfile.EnableHandMeshVisualization = false;
+        }
         /// <summary>
         /// Toggles hand mesh visualization
         /// </summary>
         public void OnToggleHandMesh()
         {
-            MixedRealityInputSystemProfile inputSystemProfile = CoreServices.InputSystem?.InputSystemProfile;
-            if (inputSystemProfile == null)
-            {
-                return;
-            }
-
-            MixedRealityHandTrackingProfile handTrackingProfile = inputSystemProfile.HandTrackingProfile;
+           MixedRealityHandTrackingProfile handTrackingProfile = gethandreference();
             if (handTrackingProfile != null)
             {
                 handTrackingProfile.EnableHandMeshVisualization = !handTrackingProfile.EnableHandMeshVisualization;
@@ -43,6 +42,16 @@ namespace Microsoft.MixedReality.Toolkit.UI
             {
                 handTrackingProfile.EnableHandJointVisualization = !handTrackingProfile.EnableHandJointVisualization;
             }
+        }
+        private MixedRealityHandTrackingProfile gethandreference()
+        {
+            MixedRealityInputSystemProfile inputSystemProfile = CoreServices.InputSystem?.InputSystemProfile;
+            if (inputSystemProfile == null)
+            {
+                return null;
+            }
+
+            return inputSystemProfile.HandTrackingProfile;
         }
     }
 }
