@@ -11,9 +11,11 @@ public class ToggleClipping : MonoBehaviour
     public void OnClippingEnable()
     {
         clippingSphere.SetActive(true);
+        clippingSphere.transform.position = _clipPoint.position;
     }
     public void OnClippingDisable()
     {
         clippingSphere.SetActive(false);
+        clippingSphere.transform.position = _clipPoint.position;
     }
 }

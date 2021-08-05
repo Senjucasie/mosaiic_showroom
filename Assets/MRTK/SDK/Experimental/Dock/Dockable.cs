@@ -6,6 +6,8 @@ using Microsoft.MixedReality.Toolkit.Utilities.Solvers;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.Events;
+
 
 namespace Microsoft.MixedReality.Toolkit.Experimental.UI
 {
@@ -19,6 +21,8 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.UI
     [AddComponentMenu("Scripts/MRTK/Experimental/Dock/Dockable")]
     public class Dockable : MonoBehaviour
     {
+        [SerializeField]
+        private UnityEvent Dockevent;
         [Experimental]
         [SerializeField, ReadOnly]
         [Tooltip("Current state of this dockable in regards to a dock.")]
@@ -36,7 +40,7 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.UI
         /// True if this object can currently be docked, false otherwise.
         /// </summary>
         public bool CanDock => dockingState == DockingState.Undocked || dockingState == DockingState.Undocking;
-
+        
         /// <summary>
         /// True if this object can currently be undocked, false otherwise.
         /// </summary>
@@ -156,6 +160,7 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.UI
                     transform.position = dockedPosition.transform.position;
                     //transform.rotation = dockedPosition.transform.rotation;
                     transform.localScale = dockedPositionScale;
+                    Dockevent.Invoke();
                 }
             }
             else if (dockedPosition == null && dockingState == DockingState.Undocking)
@@ -199,6 +204,7 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.UI
             }
 
             dockingState = DockingState.Docking;
+            
         }
 
         /// <summary>

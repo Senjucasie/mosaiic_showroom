@@ -8,6 +8,7 @@ public class AwakerProducts : MonoBehaviour
 
     void Awake()
     {
+        
       //  gameObject.SetActive(false);
     }
 }

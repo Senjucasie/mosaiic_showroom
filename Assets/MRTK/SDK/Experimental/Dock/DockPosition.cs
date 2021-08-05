@@ -15,6 +15,7 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.UI
     [RequireComponent(typeof(Collider), typeof(Rigidbody))]
     public class DockPosition : MonoBehaviour
     {
+        
         /// <summary>
         /// The object that is currently docked in this position (can be null).
         /// </summary>
@@ -30,6 +31,7 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.UI
         {
             get => dockedObject;
             set => dockedObject = value;
+            
         }
 
         /// <summary>
@@ -43,6 +45,7 @@ namespace Microsoft.MixedReality.Toolkit.Experimental.UI
         /// </summary>
         public void Awake()
         {
+            
             // Don't raycast this object to prevent blocking collisions
             gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
 

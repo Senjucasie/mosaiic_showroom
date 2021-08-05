@@ -26,12 +26,13 @@ namespace Microsoft.MixedReality.Toolkit.UI.BoundsControl
         IMixedRealityFocusChangedHandler,
         IMixedRealityFocusHandler,
         IBoundsTargetProvider
+      
     {
         #region Serialized Fields and Properties
         [SerializeField]
         [Tooltip("The object that the bounds control rig will be modifying.")]
         private GameObject targetObject;
-        /// <summary>
+       /// <summary>
         /// The object that the bounds control rig will be modifying.
         /// </summary>
         public GameObject Target
@@ -86,7 +87,7 @@ namespace Microsoft.MixedReality.Toolkit.UI.BoundsControl
                 }
             }
         }
-
+       
         [SerializeField]
         [Tooltip("Defines the volume type and the priority for the bounds calculation")]
         private BoundsCalculationMethod boundsCalculationMethod = BoundsCalculationMethod.RendererOverCollider;
@@ -675,6 +676,7 @@ namespace Microsoft.MixedReality.Toolkit.UI.BoundsControl
             DetermineTargetBounds();
             UpdateExtents();
             UpdateVisuals();
+            Debug.Log("coming");
         }
 
         #endregion
@@ -769,6 +771,7 @@ namespace Microsoft.MixedReality.Toolkit.UI.BoundsControl
                     TransformTarget(currentHandleType);
                     UpdateExtents();
                     UpdateVisuals();
+                    
                 }
                 else if ((!isChildOfTarget && Target.transform.hasChanged)
                     || (boundsOverride != null && HasBoundsOverrideChanged()))

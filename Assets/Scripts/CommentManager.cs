@@ -19,10 +19,10 @@ public class CommentManager : MonoBehaviour
     public UIManager UIControl;
     [SerializeField]
     private string _timeDate;
-
+    
     void Start()
     {
- 
+
     }
 
     // Update is called once per frame

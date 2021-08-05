@@ -1,21 +1,23 @@
 ﻿using Microsoft.MixedReality.Toolkit.Rendering;
 using UnityEngine;
-using UnityEngine.UI;
+using Microsoft.MixedReality.Toolkit.UI;
+
 
 public class IntensitySlider : MonoBehaviour
 {
-    public Slider slider;
+    public PinchSlider slider;
     public GameObject Object;
+    float _testValue=0;
     // Start is called before the first frame update
     void Start()
     {
-        slider.onValueChanged.AddListener(delegate { ValueChangeCheck(); });
+        slider.OnValueUpdated.AddListener(delegate { ValueChangeCheck(); });
     }
 
     public void ValueChangeCheck()
     {
-
-        Object.GetComponent<MaterialInstance>().Material.SetFloat("_Metallic", slider.value);
+        _testValue = 1 - slider.SliderValue;
+        Object.GetComponent<MaterialInstance>().Material.SetFloat("_Metallic", _testValue);
     }
 
 }

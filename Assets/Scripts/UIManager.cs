@@ -124,4 +124,9 @@ public class UIManager : MonoBehaviour
             test = false;
         }
     }
+    public void SetUIPosition()
+    {
+        Debug.Log("Coming");
+        ChairUI.transform.position = ChairUIPos.position;
+    }
 }
